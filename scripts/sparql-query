@@ -1,4 +1,4 @@
 #!/bin/bash
 
 curl -i -s http://localhost:8000/pokedex/query \
-	--data-urlencode 'query@-'
+	--data-urlencode 'query@-' -H 'Accept: text/plain'

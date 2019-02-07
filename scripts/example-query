@@ -1,0 +1,8 @@
+#!/bin/bash
+
+./scripts/sparql-query << EOQ
+SELECT ?s ?name
+WHERE { ?s <http://pokedex.dataincubator.org/pkm/baseDefense> 120.
+	?s <http://pokedex.dataincubator.org/pkm/name> ?name. }
+LIMIT 25
+EOQ
