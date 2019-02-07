@@ -8,6 +8,8 @@ services:
       - "8000:3030"
     volumes:
       - fuseki-data:/fuseki
+    environment:
+      ADMIN_PASSWORD: secret
 volumes:
   fuseki-data:
  

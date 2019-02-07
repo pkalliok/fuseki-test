@@ -1,0 +1,13 @@
+#!/bin/bash
+
+DATASET="$1"
+CONTENT="$2"
+
+echo "====== Creating database $DATASET ======"
+curl -i -u admin:secret \
+	http://localhost:8000/$/datasets \
+	-d dbType=tdb -d dbName="$DATASET"
+
+echo "====== Populating database $DATASET with $CONTENT ======"
+curl -i "http://localhost:8000/$DATASET/data" -F "file=@$CONTENT"
+
