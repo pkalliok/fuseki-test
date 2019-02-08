@@ -1,4 +1,8 @@
 #!/bin/bash
 
-curl -i -s http://localhost:8000/pokedex/query \
-	--data-urlencode 'query@-' -H 'Accept: text/plain'
+OP=query
+test "X$1" = "X--update" && OP=update && shift
+
+(echo 'PREFIX pd: <http://pokedex.dataincubator.org/pkm/>'; cat ) \
+| curl -i -s "http://localhost:8000/pokedex/$OP" \
+	--data-urlencode "$OP@-" -H 'Accept: text/plain'
