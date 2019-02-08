@@ -1,8 +1,12 @@
 #!/bin/bash
 
 ./scripts/sparql-query << EOQ
-SELECT ?s ?name
-WHERE { ?s pd:baseDefense 120.
-	?s pd:name ?name. }
+SELECT ?s ?name ?power
+WHERE { ?s pd:baseDefense 120;
+	   pd:baseAttack ?power;
+	   pd:name ?name.
+	FILTER ( lang(?name) = "en" ).
+}
+ORDER BY ?power
 LIMIT 25
 EOQ
