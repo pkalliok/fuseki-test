@@ -1,0 +1,4 @@
+#!/bin/bash
+
+echo "INSERT DATA { $@ }" | ./scripts/sparql-query --update
+
